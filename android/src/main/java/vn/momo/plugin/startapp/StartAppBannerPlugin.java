@@ -46,8 +46,8 @@ public class StartAppBannerPlugin {
                 .registerViewFactory(
                         PLUGIN_KEY, new BannerFactory(registrar.messenger()));
 
-                
-        new MethodChannel(registrar.view(), "vn.momo.biquote/ad").setMethodCallHandler(
+        // new code should call registrar.messenger() not registrar.view()
+        new MethodChannel(registrar.messenger(), "vn.momo.biquote/ad").setMethodCallHandler(
                 (call, result) -> {
                     if (call.method.equals("showAd")) {
                         StartAppAd.showAd(mainActivity);
